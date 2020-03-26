@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  color: $color-base;
+  font-family: 'Roboto', sans-serif;
+}
+
+a {
+  color: $color-base;
+}
+
+.container {
+  padding: 0 15px;
+}

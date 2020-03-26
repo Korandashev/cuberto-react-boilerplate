@@ -18,11 +18,11 @@ export class CommonStore {
     );
   }
 
-  @action setToken(token: string) {
+  @action setToken(token: string): void {
     this.token = token;
   }
 
-  @action setAppLoaded() {
+  @action setAppLoaded(): void {
     this.appLoaded = true;
   }
 }

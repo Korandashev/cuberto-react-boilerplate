@@ -7,7 +7,7 @@ export class UserStore {
   @observable updatingUser: any;
   @observable updatingUserErrors: any;
 
-  @action pullUser() {
+  @action pullUser(): Promise<any> {
     this.loadingUser = true;
     return agent.Auth.current()
       .then(
@@ -22,7 +22,7 @@ export class UserStore {
       );
   }
 
-  @action updateUser(newUser: any) {
+  @action updateUser(newUser: any): Promise<any> {
     this.updatingUser = true;
     return agent.Auth.save(newUser)
       .then(
@@ -37,7 +37,7 @@ export class UserStore {
       );
   }
 
-  @action forgetUser() {
+  @action forgetUser(): void {
     this.currentUser = undefined;
   }
 }

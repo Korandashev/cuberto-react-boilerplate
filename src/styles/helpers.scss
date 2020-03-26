@@ -1,0 +1,14 @@
+.-full-screen {
+  height: 100vh;
+}
+
+.-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.-bg-primary {
+  background-color: $color-primary;
+}

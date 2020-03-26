@@ -1,12 +1,13 @@
 import * as React from 'react';
-import { withRouter, RouteComponentProps } from 'react-router-dom';
+import { withRouter, RouteComponentProps, Route, Switch } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
 import { hot } from 'react-hot-loader/root';
 
 import { CommonStore } from './stores/CommonStore';
 import { UserStore } from './stores/UserStore';
 
-import HelloWorld from './components/hello-world';
+import Auth from './pages/Auth';
+import PrivateRoute from './components/PrivateRoute';
 
 interface TProps extends RouteComponentProps<any> {
   commonStore: CommonStore;
@@ -38,7 +39,18 @@ class App extends React.Component<TProps, any> {
     const { commonStore } = this.props;
 
     if (commonStore.appLoaded) {
-      return <HelloWorld title="Hello from React webpack" />;
+      return (
+        <div>
+          <Switch>
+            <PrivateRoute exact path="/">
+              Hello
+            </PrivateRoute>
+            <Route path="/auth">
+              <Auth />
+            </Route>
+          </Switch>
+        </div>
+      );
     }
 
     return <div>Loading</div>;

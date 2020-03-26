@@ -1,0 +1,45 @@
+.form {
+  $form: &;
+  $gutter: 20px;
+
+  #{$form}-footer {
+    margin-top: $gutter;
+
+    &__actions {
+      display: flex;
+      align-items: center;
+
+      a, button {
+        margin-left: 20px;
+
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+
+  input {
+    border: none;
+    background-color: #fff;
+    padding: 10px;
+  }
+
+  #{$form}-group {
+    margin-top: $gutter;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  &.-sm {
+    width: 300px;
+    max-width: 100%;
+    margin: 0 auto;
+
+    input {
+      width: 100%;
+    }
+  }
+}

@@ -5,10 +5,10 @@
 ````
 build/
 src/
-|- index.tsx _______________________________ # Application entry 
+|- index.jsx _______________________________ # Application entry 
 |- App.tsx _________________________________ # Application init
 |  |- Components/
-|    |- hello-world/ 
+|    |- ComponentName/ 
 |       |- index.tsx _______________________ # Sample component
 
 webpack
@@ -55,7 +55,6 @@ webpack
 * [Eslint](https://github.com/eslint/eslint/) [ Airbnb config ]
 * [Prettier](https://github.com/prettier/prettier) [ Code formatter ]
 * [Style](https://github.com/webpack-contrib/style-loader) & [CSS Loader](https://github.com/webpack-contrib/css-loader) & [SASS-loader](https://github.com/webpack-contrib/sass-loader)
-* [CSS modules](https://github.com/css-modules/css-modules) [ Isolated style based on each component ]
 * [Browsers list](https://github.com/browserslist/browserslist) [ Share target browsers between different front-end tools, like Autoprefixer, Stylelint and babel-preset-env ]
 * [React hot loader](https://github.com/gaearon/react-hot-loader)
 * [Webpack dev server](https://github.com/webpack/webpack-dev-server) 

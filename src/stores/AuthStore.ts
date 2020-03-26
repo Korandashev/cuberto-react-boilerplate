@@ -4,38 +4,35 @@ import agent from '../agent';
 import userStore from './UserStore';
 import commonStore from './CommonStore';
 
-class AuthStore {
+export class AuthStore {
   @observable inProgress = false;
   @observable errors: _superagent.ResponseError = undefined;
 
   @observable values = {
-    username: '',
     email: '',
     password: '',
   };
 
-  @action setUsername(username: string) {
-    this.values.username = username;
-  }
-
-  @action setEmail(email: string) {
+  @action setEmail(email: string): void {
     this.values.email = email;
   }
 
-  @action setPassword(password: string) {
+  @action setPassword(password: string): void {
     this.values.password = password;
   }
 
-  @action reset() {
-    this.values.username = '';
+  @action reset(): void {
     this.values.email = '';
     this.values.password = '';
   }
 
-  @action login() {
+  @action login(): Promise<any> {
     this.inProgress = true;
     this.errors = undefined;
-    return agent.Auth.login(this.values.email, this.values.password)
+
+    const { email, password } = this.values;
+
+    return agent.Auth.login({ email, password })
       .then(({ user }: any) => commonStore.setToken(user.token))
       .then(() => userStore.pullUser())
       .catch(
@@ -51,10 +48,13 @@ class AuthStore {
       );
   }
 
-  @action register() {
+  @action register(): Promise<any> {
     this.inProgress = true;
     this.errors = undefined;
-    return agent.Auth.register(this.values.username, this.values.email, this.values.password)
+
+    const { email, password } = this.values;
+
+    return agent.Auth.register({ email, password })
       .then(({ user }: any) => commonStore.setToken(user.token))
       .then(() => userStore.pullUser())
       .catch(
@@ -70,7 +70,7 @@ class AuthStore {
       );
   }
 
-  @action logout() {
+  @action logout(): Promise<void> {
     commonStore.setToken(undefined);
     userStore.forgetUser();
     return Promise.resolve();

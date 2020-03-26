@@ -1,7 +1,13 @@
 {
-  "parser": "babel-eslint",
-  "plugins": ["react", "jest", "prettier"],
-  "extends": ["airbnb", "plugin:prettier/recommended", "prettier/react"],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["react", "@typescript-eslint", "jest", "prettier"],
+  "extends": [
+    "airbnb",
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier/react"
+  ],
   "globals": {
     "React": true,
     "document": true,
@@ -29,9 +35,8 @@
     "jsx-a11y/href-no-hash": "off",
     "jsx-a11y/anchor-is-valid": ["warn", { "aspects": ["invalidHref"] }],
     "react/jsx-boolean-value": ["warn", "never"],
-    "react/jsx-closing-bracket-location": ["warn", "after-props"],
     "react/jsx-curly-spacing": ["warn", "never"],
-    "react/jsx-filename-extension": ["warn", { "extensions": [".jsx"] }],
+    "react/jsx-filename-extension": ["warn", { "extensions": [".jsx", ".tsx"] }],
     "react/jsx-first-prop-new-line": ["warn", "multiline"],
     "react/jsx-handler-names": ["warn", { "eventHandlerPrefix": "handle", "eventHandlerPropPrefix": "on" }],
     "react/jsx-indent": ["warn", 2],
@@ -48,7 +53,10 @@
     "import/no-extraneous-dependencies": 0,
     "import/extensions": 0,
     "babel/object-curly-spacing": 0,
-    "lines-between-class-members": 0
+    "lines-between-class-members": 0,
+    "@typescript-eslint/no-explicit-any": 0,
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/ban-ts-ignore": 0
   },
   "env": {
     "es6": true,
